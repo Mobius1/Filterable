@@ -1,0 +1,24 @@
+{
+  "name": "vanilla-datatables-filterable",
+  "version": "0.0.1",
+  "description": "Vanilla-DataTables extension that adds inputs to each column for filtering.",
+  "main": "datatable.filterable.min.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mobius1/filterable.git"
+  },
+  "keywords": [
+    "tables",
+    "html table",
+    "datatable"
+  ],
+  "author": "Karl Saunders",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mobius1/filterable/issues"
+  },
+  "homepage": "https://github.com/Mobius1/filterable#readme"
+}

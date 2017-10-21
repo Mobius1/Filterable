@@ -1,0 +1,10 @@
+{
+    "name": "vanilla-datatables-filterable",
+    "version": "0.0.1",
+    "description": "Vanilla-DataTables extension that adds inputs to each column for filtering.",
+    "main": "datatable.filterable.min.js",
+    "ignore": [
+        ".gitattributes",
+        "README.md"
+    ]
+}
