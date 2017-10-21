@@ -54,7 +54,7 @@ NOTE: Make sure the above js file is included AFTER the main Vanilla-DataTables 
 
 ## Changelog
 
-`v0.0.1`
+`v0.0.2`
 * Initial commit.
 
 

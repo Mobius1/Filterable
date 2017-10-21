@@ -1,10 +1,10 @@
-/*! filterable 0.0.1
+/*! filterable 0.0.2
  * © 2017 Karl Saunders
  */
 /**
  * @summary     filterable
  * @description Vanilla-DataTables extension that adds inputs to each column for filtering
- * @version     0.0.1
+ * @version     0.0.2
  * @file        datatable.filterable.js
  * @author      Karl Saunders
  * @contact     mobius1@gmx.com
@@ -67,7 +67,9 @@ if (window.DataTable) {
             that.row = utils.createElement("tr");
 
             utils.each(instance.table.header.cells, function(cell) {
-                that.add(cell.index, o.placeholders && o.placeholders[cell.index] ? o.placeholders[cell.index] : "Search " + cell.content)
+                that.add({
+                    index: cell.index
+                });
             });
 
             that.row.addEventListener("input", function(e) {
@@ -100,8 +102,23 @@ if (window.DataTable) {
                 });
             });
 
+            instance.on("columns.order", function(order) {
+                var inputs = [],
+                    cells = [];
+                utils.each(order, function(i) {
+                    inputs[i] = that.inputs[i];
+                    cells.push(that.row.cells[i]);
+                });
+
+                utils.each(cells, function(cell) {
+                    that.row.appendChild(cell);
+                });
+
+                that.inputs = inputs;
+            });
+
             instance.on("columns.add", function() {
-                that.add(instance.columns().count());
+                that.add();
             });
 
             instance.on("columns.remove", function(column) {
@@ -113,12 +130,16 @@ if (window.DataTable) {
             this.initialised = true;
         };
 
-        Filter.prototype.add = function(cell, placeholder) {
-
-            var index = cell.index || cell;
+        Filter.prototype.add = function(config) {
 
             var that = this,
                 o = that.config;
+
+            var index = config && config.index !== undefined ? config.index : instance.columns().count() - 1;
+
+            var options = utils.extend({
+                placeholder: o.placeholders && o.placeholders[index] ? o.placeholders[index] : "Search " + instance.table.header.cells[index].content
+            }, config);
 
             var td = utils.createElement("td", {
                 class: o.classes.filterable
@@ -126,7 +147,7 @@ if (window.DataTable) {
             var input = utils.createElement("input", {
                 type: "text",
                 class: o.classes.filter,
-                placeholder: placeholder || ""
+                placeholder: options.placeholder || ""
             });
 
             if (instance.config.fixedColumns) {
