@@ -1,7 +1,7 @@
 # filterable
 [![npm version](https://badge.fury.io/js/vanilla-datatables-filterable.svg)](https://badge.fury.io/js/vanilla-datatables-filterable) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Mobius1/filterable/blob/master/LICENSE) ![](http://img.badgesize.io/Mobius1/filterable/master/datatable.filterable.min.js) ![](http://img.badgesize.io/Mobius1/filterable/master/datatable.filterable.min.js?compression=gzip&label=gzipped)
 
-A Vanilla-DataTables extension to allow for exporting to various formats.
+A Vanilla-DataTables extension that adds inputs to each column for filtering.
 
 NOTE: This extension is only compatable with `v2.0.0` and above of `Vanilla-DataTables`.
 
